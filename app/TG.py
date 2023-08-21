@@ -56,8 +56,8 @@ def wifiConncect():
         
     print('Conexión establecida!')
     
-if not wlan.isconnected():      # check if the station is connected to an AP
-    wifiConncect()
+#if not wlan.isconnected():      # check if the station is connected to an AP
+    #wifiConncect()
     
 #Configuración tipo de letra y encendido LCD
 pin_cts = machine.Pin(21, machine.Pin.OUT)
