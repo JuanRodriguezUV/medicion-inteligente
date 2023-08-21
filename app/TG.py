@@ -48,7 +48,7 @@ def wifiConncect():
         if wlan.status() == 1001:
             pass
         else:            
-            wlan.connect('Familia Rodriguez', '16670397') # connect to an AP
+            wlan.connect('medidor_inteligente', '16670397') # connect to an AP
             
         time.sleep(1)
         
@@ -376,7 +376,6 @@ def main():
             "fecha": "{2:02d}/{1:02d}/{0:4d}".format(*rtc.datetime()),
             "hora": "{4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime())
             }
-            print("Helouu")
 
             #Diccionario medidor2
             data2 = {
@@ -408,7 +407,7 @@ def main():
 
             #Headers
             headers = {'Content-Type': 'application/json'}
-            headers2 = { "api-key": "er39p9Z5TD0C9KBksJh3UrQ2UwuJPZ3M2fneDa5rwtABvnnnOE4Kbs40mqCBBsgZ" } #Api MONGOdb 
+            headers2 = { "api-key": "er39p9Z5TD0C9KBksJh3UrQ2UwuJPZ3M2fneDa5rwtABvnnnOE4Kbs40mqCBBsgZ" } #Api MONGOdb
 
             #Payload MONGOdb: base de datos medidorInteligente - colección medidor 1
             insertPayload = {
