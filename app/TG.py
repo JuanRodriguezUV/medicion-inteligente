@@ -140,7 +140,6 @@ def main():
     # print("Reading from register 0x00")
     # 'execute' returns a pair of 16-bit words
     
-print("holU")
  
     while True:
         
@@ -452,8 +451,7 @@ print("holU")
             time.sleep_ms(5000) #Garantizamos un tiempo par que los medidores enciendan con normalidad 
             wifiConncect()
 
-if __name__ == "__main__":
-    main()
+
 
 #Posibles mejoras:
 #contar numero de excepciones y cuales son
