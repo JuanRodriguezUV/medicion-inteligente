@@ -26,11 +26,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import struct
 
 # from modbus import LOGGER
-from modbus.modbus import (Query, Master,
+from app.modbus.modbus import (Query, Master,
                            InvalidArgumentError, ModbusInvalidResponseError, ModbusInvalidRequestError
                            )
-from modbus.hooks import call_hooks
-from modbus import utils
+from app.modbus.hooks import call_hooks
+from app.modbus import utils
 
 # Some values used in the serial_prep callback
 serial_cb_tx_begin = const(0x01)
