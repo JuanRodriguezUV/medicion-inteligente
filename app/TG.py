@@ -171,12 +171,13 @@ while True:
         display.set_color(60000,0) #Configuración de impresión LCD
         display.set_pos(5,20)
         
-        print("holu")
+        
 
         #MEDIDOR 1 TOMZ HIKING
 
         #Voltaje
         data1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x16, 1)
+        print("holu")
         print("Voltaje:{} [V],".format(data1[0]*0.1))
         voltaje_LCD = str(data1[0]*0.1)
         display.print('Voltaje= {} [V]    '.format(voltaje_LCD))
