@@ -88,8 +88,6 @@ display = ILI9341(
 display.erase() #Borrar lo que tenga escrito la LCD
 display.set_font(LCD.tt32) #Determinar tipo de letra
 
-print("holU")
-
 rtc = RTC() #Variable de reloj
 
 def serial_prep(mode):
@@ -142,6 +140,8 @@ def main():
     # print("Reading from register 0x00")
     # 'execute' returns a pair of 16-bit words
     
+print("holU")
+ 
     while True:
         
         try:
