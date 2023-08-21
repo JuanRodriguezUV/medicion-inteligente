@@ -59,32 +59,6 @@ def wifiConncect():
 if not wlan.isconnected():      # check if the station is connected to an AP
     wifiConncect()
 
-#Configuración tipo de letra y encendido LCD
-pin_cts = machine.Pin(21, machine.Pin.OUT)
-fonts = [LCD.tt32]
-power = Pin(LCD.m5stack.TFT_LED_PIN, Pin.OUT)
-power.value(1)
-
-#Configuración comunicación LCD SPI
-spi = SPI(
-    2,
-    baudrate=40000000,
-    miso=Pin(LCD.m5stack.TFT_MISO_PIN),
-    mosi=Pin(LCD.m5stack.TFT_MOSI_PIN),
-    sck=Pin(LCD.m5stack.TFT_CLK_PIN))
-
-#Configuración pines y dimensiones LCD
-display = ILI9341(
-    spi,
-    cs=Pin(LCD.m5stack.TFT_CS_PIN),
-    dc=Pin(LCD.m5stack.TFT_DC_PIN),
-    rst=Pin(LCD.m5stack.TFT_RST_PIN),
-    w=240,
-    h=320,
-    r=6)
-
-display.erase() #Borrar lo que tenga escrito la LCD
-display.set_font(LCD.tt32) #Determinar tipo de letra
 
 rtc = RTC() #Variable de reloj
 
@@ -455,8 +429,7 @@ while True:
         time.sleep_ms(5000) #Garantizamos un tiempo par que los medidores enciendan con normalidad 
         wifiConncect()
 
-if __name__ == "__main__":
-    main()
+
 
 #Posibles mejoras:
 #contar numero de excepciones y cuales son
