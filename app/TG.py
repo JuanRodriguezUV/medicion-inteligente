@@ -451,7 +451,8 @@ while True:
         time.sleep_ms(5000) #Garantizamos un tiempo par que los medidores enciendan con normalidad 
         wifiConncect()
 
-
+if __name__ == "__main__":
+    main()
 
 #Posibles mejoras:
 #contar numero de excepciones y cuales son
