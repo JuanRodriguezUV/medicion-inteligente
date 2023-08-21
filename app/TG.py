@@ -376,6 +376,7 @@ def main():
             "fecha": "{2:02d}/{1:02d}/{0:4d}".format(*rtc.datetime()),
             "hora": "{4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime())
             }
+            print("Helouu")
 
             #Diccionario medidor2
             data2 = {
@@ -424,8 +425,6 @@ def main():
             "collection": "medidor2",
             "document": data2,
             }
-            
-            wifiConncect()
 
             #Envío de información 
             #response  = urequests.post(url, json=data, headers=headers)
