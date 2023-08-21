@@ -23,6 +23,7 @@ import modbus
 import modbus.defines as cst
 from modbus import modbus_rtu
 print("hola")
+WLAN.disconnect()
 wlan = network.WLAN(network.STA_IF) # create station interface
 wlan.active(True)       # activate the interface
 
