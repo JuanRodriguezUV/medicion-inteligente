@@ -140,7 +140,8 @@ def main():
     # print("Reading from register 0x00")
     # 'execute' returns a pair of 16-bit words
     
- 
+main()
+
 while True:
     
     try:
