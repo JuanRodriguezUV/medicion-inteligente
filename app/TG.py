@@ -19,9 +19,9 @@ import json
 import machine
 import struct
 import time
-import modbus
-import modbus.defines as cst
-from modbus import modbus_rtu
+import app.modbus
+import app.modbus.defines as cst
+from app.modbus import modbus_rtu
 print("hola")
 
 wlan = network.WLAN(network.STA_IF) # create station interface
