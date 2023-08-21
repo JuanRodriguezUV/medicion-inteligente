@@ -1,5 +1,5 @@
 # import LCD
-print("hola")
+
 from LCD.ili934xnew import ILI9341, color565
 from machine import Pin, SPI, RTC
 import LCD
@@ -22,7 +22,7 @@ import time
 import modbus
 import modbus.defines as cst
 from modbus import modbus_rtu
-
+print("hola")
 wlan = network.WLAN(network.STA_IF) # create station interface
 wlan.active(True)       # activate the interface
 
