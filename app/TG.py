@@ -133,7 +133,9 @@ def main():
                         stop=1, timeout=1000, timeout_char=50)
 
     # master = modbus_rtu.RtuMaster(uart)
+    print("hole")
     master = modbus_rtu.RtuMaster(uart, serial_prep_cb=serial_prep)
+    print("holpp")
 
     # print("Reading from register 0x00")
     # 'execute' returns a pair of 16-bit words
@@ -165,8 +167,6 @@ while True:
         print("Hora: {4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime()))
 
         ######################### FIN #############################
-
-        print("hole")
         
         display.set_color(60000,0) #Configuración de impresión LCD
         display.set_pos(5,20)
