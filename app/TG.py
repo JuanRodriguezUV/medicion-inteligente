@@ -1,4 +1,5 @@
 # import LCD
+print("hola")
 from LCD.ili934xnew import ILI9341, color565
 from machine import Pin, SPI, RTC
 import LCD
