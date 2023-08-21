@@ -26,14 +26,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import struct
 
 # from modbus import LOGGER
-from app.modbus import defines
-from app.modbus.exceptions import(
+from modbus import defines
+from modbus.exceptions import(
     ModbusError, ModbusFunctionNotSupportedError, DuplicatedKeyError, MissingKeyError, InvalidModbusBlockError,
     InvalidArgumentError, OverlapModbusBlockError, OutOfModbusBlockError, ModbusInvalidResponseError,
     ModbusInvalidRequestError
 )
-from app.modbus.hooks import call_hooks
-from app.modbus.utils import get_log_buffer
+from modbus.hooks import call_hooks
+from modbus.utils import get_log_buffer
 
 # modbus is using the python logging mechanism
 # you can define this logger in your app in order to see its prints logs
