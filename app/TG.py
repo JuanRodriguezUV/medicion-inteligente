@@ -58,8 +58,6 @@ def wifiConncect():
     
 if not wlan.isconnected():      # check if the station is connected to an AP
     wifiConncect()
-    
-print("hole")
 
 #Configuración tipo de letra y encendido LCD
 pin_cts = machine.Pin(21, machine.Pin.OUT)
@@ -168,8 +166,12 @@ while True:
 
         ######################### FIN #############################
 
+        print("hole")
+        
         display.set_color(60000,0) #Configuración de impresión LCD
         display.set_pos(5,20)
+        
+        print("holu")
 
         #MEDIDOR 1 TOMZ HIKING
 
