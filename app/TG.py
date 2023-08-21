@@ -424,6 +424,8 @@ def main():
             "collection": "medidor2",
             "document": data2,
             }
+            
+            wifiConncect()
 
             #Envío de información 
             #response  = urequests.post(url, json=data, headers=headers)
