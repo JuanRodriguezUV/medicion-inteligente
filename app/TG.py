@@ -88,6 +88,7 @@ display = ILI9341(
 display.erase() #Borrar lo que tenga escrito la LCD
 display.set_font(LCD.tt32) #Determinar tipo de letra
 
+print("holU")
 
 rtc = RTC() #Variable de reloj
 
