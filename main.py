@@ -16,7 +16,7 @@ def connectToWifiAndUpdate():
             pass
     print('network config:', sta_if.ifconfig())
     #Importante que el repositorio tenga releases y cofiguras las versiones. #Dejando main_dir='' se accede a la carpeta general del repositorio si se desea acceder a una carpeta en específio se escribe en este parametro
-    otaUpdater = OTAUpdater('https://github.com/JuanRodriguezUV/medicion-inteligente', main_dir='', secrets_file="secrets.py")
+    otaUpdater = OTAUpdater('https://github.com/JuanRodriguezUV/medicion-inteligente', main_dir='app', secrets_file="secrets.py")
     hasUpdated = otaUpdater.install_update_if_available()
     if hasUpdated:
         machine.reset()
