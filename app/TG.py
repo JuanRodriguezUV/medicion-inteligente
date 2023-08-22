@@ -102,6 +102,8 @@ def main():
     
     while True:
         
+        try:
+        
             #################### HORA Y FECHA ############################
 
             url_fecha="http://worldtimeapi.org/api/timezone/America/Bogota"
@@ -379,6 +381,11 @@ def main():
             #Tiempo de envío entre cada medida
             #time.sleep_ms(3600000) #1 hora
             time.sleep_ms(4000)
+            
+        except Exception:
+            print("Ha habido una excepción")
+            time.sleep_ms(5000) #Garantizamos un tiempo par que los medidores enciendan con normalidad 
+            wifiConncect()
 
 main()
 
