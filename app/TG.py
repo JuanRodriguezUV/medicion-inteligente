@@ -10,6 +10,7 @@ import machine
 import struct
 import time
 import modbus
+import main
 import modbus.defines as cst
 from modbus import modbus_rtu
 
