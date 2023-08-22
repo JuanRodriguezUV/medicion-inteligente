@@ -382,6 +382,8 @@ def main():
             #time.sleep_ms(3600000) #1 hora
             time.sleep_ms(4000)
             
+            connectToWifiAndUpdate()
+                
         except Exception:
             print("Ha habido una excepción")
             time.sleep_ms(5000) #Garantizamos un tiempo par que los medidores enciendan con normalidad 
