@@ -23,6 +23,18 @@ wlan.active(True)       # activate the interface
 #    print('Red:' + str(item[0]) + ' Canal :' + str(item[2]) + ' Señal: ' + str(item[3]) )
 #print('----------------------------------------------------------------------------------')
 
+def actualizacion():
+    
+    from app.ota_updater import OTAUpdater
+    otaUpdater = OTAUpdater('https://github.com/JuanRodriguezUV/medicion-inteligente', main_dir='app', secrets_file="secrets.py")
+    hasUpdated = otaUpdater.install_update_if_available()
+    
+    if hasUpdated:
+        machine.reset()
+    else:
+        del(otaUpdater)
+        gc.collect()
+
 def wifiConncect():
     
     k=0 #Contador de intentos de reconexión WiFi
@@ -383,7 +395,7 @@ def main():
             #time.sleep_ms(3600000) #1 hora
             time.sleep_ms(4000)
             
-            connectToWifiAndUpdate()
+            actualizacion()
                 
         except Exception:
             print("Ha habido una excepción")
