@@ -1,3 +1,5 @@
+from machine import Pin, RTC
+
 #import connection
 import urequests
 import network
