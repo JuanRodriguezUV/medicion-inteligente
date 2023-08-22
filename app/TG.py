@@ -24,7 +24,7 @@ wlan.active(True)       # activate the interface
 #print('----------------------------------------------------------------------------------')
 
 def actualizacion():
-    
+    import gc, app.secrets as secrets
     from app.ota_updater import OTAUpdater
     otaUpdater = OTAUpdater('https://github.com/JuanRodriguezUV/medicion-inteligente', main_dir='app', secrets_file="secrets.py")
     hasUpdated = otaUpdater.install_update_if_available()
