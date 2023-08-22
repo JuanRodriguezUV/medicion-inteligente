@@ -352,6 +352,9 @@ def main():
             Total_reactive_energy = Total_reactive_energy 
             print("Total reactive energy 2={:.4} [kVarh]".format(Total_reactive_energy))
             
+            time.sleep_ms(100)
+            
+            
 
             #FIN MEDIDAS
 
