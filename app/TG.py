@@ -50,7 +50,7 @@ def wifiConncect():
         if wlan.status() == 1001:
             pass
         else:            
-            wlan.connect('medidor_inteligente', '16670397') # connect to an AP
+            wlan.connect('Familia Rodriguez', '16670397') # connect to an AP
             
         time.sleep(1)
         
