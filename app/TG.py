@@ -404,7 +404,9 @@ def main():
             "fecha": "{2:02d}/{1:02d}/{0:4d}".format(*rtc.datetime()),
             "hora": "{4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime())
             }
-
+            
+            time.sleep_ms(10)
+            
             #Headers
             headers = {'Content-Type': 'application/json'}
             headers2 = { "api-key": "er39p9Z5TD0C9KBksJh3UrQ2UwuJPZ3M2fneDa5rwtABvnnnOE4Kbs40mqCBBsgZ" } #Api MONGOdb
@@ -428,12 +430,15 @@ def main():
             #Envío de información 
             #response  = urequests.post(url, json=data, headers=headers)
             #print(response.content)
+            time.sleep_ms(10)
 
             response2 = urequests.post(url2, json=insertPayload, headers=headers2)
             print(response2.content)
 
             #response3 = urequests.post(url3, json=data2, headers=headers)
             #print(response3.content)
+            
+            time.sleep_ms(10)
 
             response4 = urequests.post(url2, json=insertPayload2, headers=headers2)
             print(response4.content)
