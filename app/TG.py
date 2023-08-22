@@ -1,14 +1,3 @@
-# import LCD
-from LCD.ili934xnew import ILI9341, color565
-from machine import Pin, SPI, RTC
-import LCD
-import LCD.m5stack
-import LCD.tt14
-import LCD.glcdfont
-import LCD.tt14
-import LCD.tt24
-import LCD.tt32
-
 #import connection
 import urequests
 import network
@@ -30,8 +19,6 @@ wlan.active(True)       # activate the interface
 #for item in wifiList:
 #    print('Red:' + str(item[0]) + ' Canal :' + str(item[2]) + ' Señal: ' + str(item[3]) )
 #print('----------------------------------------------------------------------------------')
-
-
 
 def wifiConncect():
     
@@ -59,31 +46,6 @@ if not wlan.isconnected():      # check if the station is connected to an AP
     
 #Configuración tipo de letra y encendido LCD
 pin_cts = machine.Pin(21, machine.Pin.OUT)
-fonts = [LCD.tt32]
-power = Pin(LCD.m5stack.TFT_LED_PIN, Pin.OUT)
-power.value(1)
-
-#Configuración comunicación LCD SPI
-spi = SPI(
-    2,
-    baudrate=40000000,
-    miso=Pin(LCD.m5stack.TFT_MISO_PIN),
-    mosi=Pin(LCD.m5stack.TFT_MOSI_PIN),
-    sck=Pin(LCD.m5stack.TFT_CLK_PIN))
-
-#Configuración pines y dimensiones LCD
-display = ILI9341(
-    spi,
-    cs=Pin(LCD.m5stack.TFT_CS_PIN),
-    dc=Pin(LCD.m5stack.TFT_DC_PIN),
-    rst=Pin(LCD.m5stack.TFT_RST_PIN),
-    w=240,
-    h=320,
-    r=6)
-
-display.erase() #Borrar lo que tenga escrito la LCD
-display.set_font(LCD.tt32) #Determinar tipo de letra
-
 
 rtc = RTC() #Variable de reloj
 
@@ -109,7 +71,6 @@ def serial_prep(mode):
 
     else:
         raise ValueError("Given 'mode' does not have a defined action")
-
 
 #Función para juntar los H bits y Low bits luego usar IEEE754 para tener los binarios en coma flotante
 def bin_to_float(num1,num2): 
@@ -139,7 +100,6 @@ def main():
     
     while True:
         
-
             #################### HORA Y FECHA ############################
 
             url_fecha="http://worldtimeapi.org/api/timezone/America/Bogota"
@@ -163,56 +123,31 @@ def main():
 
             ######################### FIN #############################
 
-            display.set_color(60000,0) #Configuración de impresión LCD
-            display.set_pos(5,20)
-
             #MEDIDOR 1 TOMZ HIKING
 
             #Voltaje
             data1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x16, 1)
             print("Voltaje:{} [V],".format(data1[0]*0.1))
-            voltaje_LCD = str(data1[0]*0.1)
-            display.print('Voltaje= {} [V]    '.format(voltaje_LCD))
-
-            display.set_color(10000,0)
-            display.set_pos(5,60)
 
             #Frecuencia
             data2 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x11, 1)
             print("Frecuencia={} [Hz]".format(data2[0]*0.01))
-            frecuencia_LCD = str(data2[0]*0.01)
-            display.print("Frecuencia= {} [Hz]    ".format(frecuencia_LCD))
-
-            display.set_color(20000,0)
-            display.set_pos(5,100)
 
             #Corriente
             data3 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x19, 1)
             corriente=data3[0]*0.01
             print("Corriente={} [A]".format(corriente))
-            corriente_LCD = str(corriente)
-            display.print("Corriente= {} [A]    ".format(corriente_LCD))
-
-            display.set_color(1500,0)
-            display.set_pos(5,140)
-
+ 
             #Factor de potencia
             data4 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x2B, 1)
             fp = data4[0]*0.001
             print("Factor potencia={:.3}".format(fp))
-            Fp_LCD = str(fp)
-            display.print("Factor potencia= {:.3}    ".format(fp))
-
-            display.set_color(2300,0)
-            display.set_pos(5,180)
 
             ##Potencia activa
             data5 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x1E, 1)
             P = data5[0]*0.001
             print("P Activa={:.4} [kW]".format(P))
-            P_LCD = str(P)
-            display.print("P Activa= {:.4} [W]  ".format(P))
-            
+
             ##Total kWh
             data11 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0x01, 2)
             Total_kWh = data11[0]*0.01
@@ -351,10 +286,6 @@ def main():
             Total_reactive_energy = Total_reactive_energy 
             print("Total reactive energy 2={:.4} [kVarh]".format(Total_reactive_energy))
             
-            time.sleep_ms(100)
-            
-            
-
             #FIN MEDIDAS
 
             #URLS envío de información bases de datos
@@ -407,8 +338,6 @@ def main():
             "hora": "{4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime())
             }
             
-            time.sleep_ms(10)
-            
             #Headers
             headers = {'Content-Type': 'application/json'}
             headers2 = { "api-key": "er39p9Z5TD0C9KBksJh3UrQ2UwuJPZ3M2fneDa5rwtABvnnnOE4Kbs40mqCBBsgZ" } #Api MONGOdb
@@ -448,14 +377,9 @@ def main():
             #Tiempo de envío entre cada medida
             #time.sleep_ms(3600000) #1 hora
             time.sleep_ms(4000)
-  
-
-
 
 main()
 
 #Posibles mejoras:
 #contar numero de excepciones y cuales son
-    
-    
     
