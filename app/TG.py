@@ -118,6 +118,8 @@ def bin_to_float(num1,num2):
     valor_float = struct.unpack('>f', s)[0]
     return valor_float
 
+main()
+
 def main():
     pin_cts.value(0)
 
@@ -448,7 +450,7 @@ def main():
             wifiConncect()
 
 
-main()
+
 
 #Posibles mejoras:
 #contar numero de excepciones y cuales son
