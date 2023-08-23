@@ -116,30 +116,7 @@ def main():
     while True:
         
         try:
-        
-            #################### HORA Y FECHA ############################
-
-            url_fecha="http://worldtimeapi.org/api/timezone/America/Bogota"
-
-            response_fecha = urequests.get(url_fecha)
-
-            datos_objeto = response_fecha.json()
-            fecha_hora = str(datos_objeto["datetime"])
-            año = int(fecha_hora[0:4])
-            mes = int(fecha_hora[5:7])
-            día = int(fecha_hora[8:10])
-            hora = int(fecha_hora[11:13])
-            minutos = int(fecha_hora[14:16])
-            segundos = int(fecha_hora[17:19])
-            sub_segundos = int(round(int(fecha_hora[20:26]) / 10000))
-
-            rtc.datetime((año, mes, día, 0, hora, minutos, segundos, sub_segundos))
-
-            print("Fecha:{2:02d}/{1:02d}/{0:4d}".format(*rtc.datetime()))
-            print("Hora: {4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime()))
-
-            ######################### FIN #############################
-
+            
             #MEDIDOR 1 TOMZ HIKING
 
             #Voltaje
@@ -309,7 +286,31 @@ def main():
             #url = "http://192.168.137.1/uRequestESP32/uRequest.php" #Base de datos local medidor 1 mysql phpmyadmin
             url2 ="https://us-east-1.aws.data.mongodb-api.com/app/data-vipwg/endpoint/data/v1/action/insertOne" #Base datos nube MONGOdb
             #url3 = "http://192.168.137.1/uRequestESP32/uRequest2.php" #Base de datos local medidor 2 mysql phpmyadmin
+            
+            
+            #################### HORA Y FECHA ############################
 
+            url_fecha="http://worldtimeapi.org/api/timezone/America/Bogota"
+
+            response_fecha = urequests.get(url_fecha)
+
+            datos_objeto = response_fecha.json()
+            fecha_hora = str(datos_objeto["datetime"])
+            año = int(fecha_hora[0:4])
+            mes = int(fecha_hora[5:7])
+            día = int(fecha_hora[8:10])
+            hora = int(fecha_hora[11:13])
+            minutos = int(fecha_hora[14:16])
+            segundos = int(fecha_hora[17:19])
+            sub_segundos = int(round(int(fecha_hora[20:26]) / 10000))
+
+            rtc.datetime((año, mes, día, 0, hora, minutos, segundos, sub_segundos))
+
+            print("Fecha:{2:02d}/{1:02d}/{0:4d}".format(*rtc.datetime()))
+            print("Hora: {4:02d}:{5:02d}:{6:02d}".format(*rtc.datetime()))
+
+            ######################### FIN #############################
+            
             #Diccionario medidor1
             data = {
             "voltaje [V]": data1[0]*0.1,
@@ -375,26 +376,24 @@ def main():
             "document": data2,
             }
 
-            #Envío de información 
+            #Envío de información
+            
+            #Tiempo de envío entre cada medida
+            time.sleep_ms(3587000) #1 hora considerando 13 segundos de retardo del micro.
+            #time.sleep_ms(47000)
+            
             #response  = urequests.post(url, json=data, headers=headers)
             #print(response.content)
-            time.sleep_ms(10)
 
             response2 = urequests.post(url2, json=insertPayload, headers=headers2)
             print(response2.content)
 
             #response3 = urequests.post(url3, json=data2, headers=headers)
             #print(response3.content)
-            
-            time.sleep_ms(10)
 
             response4 = urequests.post(url2, json=insertPayload2, headers=headers2)
             print(response4.content)
 
-            #Tiempo de envío entre cada medida
-            #time.sleep_ms(3600000) #1 hora
-            time.sleep_ms(4000)
-            
             actualizacion()
                 
         except Exception:
